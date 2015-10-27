@@ -1,0 +1,56 @@
+.page-multi-upload-example {
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.multi-upload-wrapper {
+  border: 1px solid #cecece;
+  max-width: 600px;
+
+  .multi-upload-dropzone {
+    text-align: center;
+    margin: 10px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    background-color: #eee;
+    cursor: pointer;
+  }
+
+  .multi-upload-list {
+    margin: 20px 0;
+    padding: 0;
+  }
+
+  .upload-file {
+    list-style-type: none;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    line-height: 80px;
+    vertical-align: middle;
+
+    .upload-file-preview {
+      width: 120px;
+      height: 80px;
+      background-position: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 15px;
+      display: inline-block;
+      float: left;
+    }
+
+    .upload-file-cancel {
+      float: right;
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  .multi-upload-btn {
+    float: right;
+    margin: 20px 0;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+}
