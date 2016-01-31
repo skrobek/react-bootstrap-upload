@@ -1,3 +1,102 @@
 .content {
   padding-top: 40px;
 }
+
+$calendarBorder: 1px solid #dfdfdf;
+$dayHeight: 50px;
+$dayEvent: 20px;
+
+.calendar {
+  width: 100%;
+  position: relative;
+
+  .controls {
+    clear: both;
+
+    .control {
+      position: relative;
+      height: $dayHeight;
+      line-height: $dayHeight;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: middle;
+      top: -5px;
+
+      &.prev {
+        left: 0px;
+        position: absolute;
+      }
+
+      &.next {
+        right: 0px;
+        position: absolute;
+      }
+    }
+  }
+
+  .month {
+    box-sizing: border-box;
+    text-align: center;
+    float: left;
+    margin-top: 20px;
+    height: $dayHeight * 7;
+
+    &-2:first-child {
+      margin-right: 2%;
+    }
+  }
+
+  .calendar-day {
+    width: calc(100% / 7);
+    height: $dayHeight;
+    line-height: $dayHeight;
+    position: relative;
+    float: left;
+    cursor: pointer;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-bottom: $calendarBorder;
+    border-left: $calendarBorder;
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+
+    &:nth-child(7n+8) {
+      border-right: $calendarBorder;
+    }
+
+    &.disabled {
+      color: #CECECE;
+      cursor: default;
+    }
+
+    &.selected {
+      background-color: #0DBAE4;
+      color: #FFF;
+    }
+
+    &.week-day {
+      background-color: #5e5e5e;
+      color: #fff;
+      border-bottom: none;
+      border-top: $calendarBorder;
+      border-bottom: $calendarBorder;
+      font-weight: bold;
+      cursor: default;
+    }
+
+    .day-event {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: $dayEvent;
+      height: $dayEvent;
+      line-height: $dayEvent;
+      font-size: 12px;
+      text-align: center;
+      background-color: #7c7c7c;
+      color: white;
+    }
+  }
+}

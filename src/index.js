@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MultiUpload from './react-multi-upload/MultiUpload';
+import Calendar from './react-calendar';
 
 
 class Example extends React.Component {
@@ -9,10 +10,13 @@ class Example extends React.Component {
   };
 
   render() {
-    return(
+    return (
       <div className="content">
-        <div className="page-multi-upload-example">
+        {/*<div className="page-multi-upload-example">
           <MultiUpload onUpload={this.onUpload} />
+        </div>*/}
+        <div className="page-calendar-example">
+          <Calendar />
         </div>
       </div>
     );
