@@ -9,8 +9,8 @@ export default class Calendar extends Component {
     super(props);
 
     this.state = {
-      selected: this.props.selected,
-      startDay: moment().format(),
+      selected: this.getSelectedDay(),
+      startDay: this.getFirstDisplayDate(),
       visibleMonths: this.props.visibleMonths
     };
   }
@@ -23,6 +23,28 @@ export default class Calendar extends Component {
       }
     });
   };
+
+
+  getSelectedDay() {
+    if (this.props.minDate && moment(this.props.minDate).isAfter(this.props.selected)) {
+      return moment(this.props.minDate).format();
+    }
+
+    return this.props.selected;
+  }
+
+
+  getFirstDisplayDate() {
+    const today = moment();
+
+    if (this.props.mode === 'YEAR_VIEW') {
+      const i = today.month();
+      const january = today.subtract(i, 'months');
+      return moment(january.format());
+    }
+
+    return today.format();
+  }
 
 
   getDaysForMonth(date) {
@@ -243,16 +265,18 @@ Calendar.propTypes = {
   leftArrow: PropTypes.node,
   rightArrow: PropTypes.node,
   onSelect: PropTypes.func,
-  onMonthChange: PropTypes.func
+  onMonthChange: PropTypes.func,
+  mode: PropTypes.oneOf([null, 'YEAR_VIEW'])
 };
 
 Calendar.defaultProps = {
   selected: moment().format('YYYY-MM-DD'),
   dateFormat: 'YYYY-MM-DD',
   dayFormat: 'D',
-  minDate: '2016-01-15',
+  minDate: moment().add(1, 'days').format('YYYY-MM-DD'),
   visibleMonths: 12,
   monthsInRow: 3,
+  mode: 'WEEK_VIEW',
   days: {
     '2016-01-29': {
       disabled: true,
